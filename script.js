@@ -133,4 +133,4 @@ function update(id,indId,val,last){
 }
 
 loadPrice();
-setInterval(loadPrice,10000);
+setInterval(loadPrice,60000);
