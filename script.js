@@ -60,3 +60,10 @@ tg.addEventListener("mousemove", e => {
 tg.addEventListener("mouseleave", () => {
   tg.style.transform = "translate(0,0) scale(1)";
 });
+
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd")
+.then(r=>r.json())
+.then(d=>{
+  document.getElementById("btc").innerText = "$" + d.bitcoin.usd;
+  document.getElementById("eth").innerText = "$" + d.ethereum.usd;
+});
