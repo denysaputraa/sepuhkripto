@@ -33,3 +33,16 @@ addEventListener("scroll",()=>{
 
 /* THEME TOGGLE */
 document.querySelector(".toggle").onclick=()=>document.body.classList.toggle("light");
+
+/* MAGNETIC BUTTON */
+document.querySelectorAll(".btn").forEach(btn=>{
+  btn.addEventListener("mousemove",e=>{
+    const r=btn.getBoundingClientRect();
+    const x=e.clientX-r.left-r.width/2;
+    const y=e.clientY-r.top-r.height/2;
+    btn.style.transform=`translate(${x*0.25}px,${y*0.25}px)`;
+  });
+  btn.addEventListener("mouseleave",()=>{
+    btn.style.transform="translate(0,0)";
+  });
+});
