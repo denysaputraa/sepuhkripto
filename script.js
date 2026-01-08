@@ -67,3 +67,24 @@ fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_cur
   document.getElementById("btc").innerText = "$" + d.bitcoin.usd;
   document.getElementById("eth").innerText = "$" + d.ethereum.usd;
 });
+/* LIVE PRICE */
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd")
+.then(r=>r.json())
+.then(d=>{
+  document.getElementById("btc").innerText = "$" + d.bitcoin.usd;
+  document.getElementById("eth").innerText = "$" + d.ethereum.usd;
+});
+
+/* MAGNET EFFECT */
+const tg = document.querySelector(".telegram-float");
+if(tg){
+  tg.addEventListener("mousemove", e=>{
+    const r = tg.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top - r.height/2;
+    tg.style.transform = `translate(${x*.3}px, ${y*.3}px) scale(1.05)`;
+  });
+  tg.addEventListener("mouseleave", ()=>{
+    tg.style.transform = "translate(0,0) scale(1)";
+  });
+}
