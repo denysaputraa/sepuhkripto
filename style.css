@@ -1,67 +1,45 @@
-/* Reset basic style */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+/* Reset & Font */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+body { scroll-behavior: smooth; }
 
 /* Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #1f1f1f;
-  color: white;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 10;
+  display:flex; justify-content:space-between; padding:1rem 2rem;
+  background:#1f1f1f; color:white; position:fixed; width:100%; top:0; z-index:10;
 }
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: #ff6b81;
-}
+.nav-links { list-style:none; display:flex; gap:2rem; }
+.nav-links a { color:white; text-decoration:none; transition:0.3s; }
+.nav-links a:hover { color:#ff6b81; }
 
 /* Intro Section */
 .intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: white;
+  height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; background:linear-gradient(135deg, #6a11cb, #2575fc); color:white;
 }
-
-.intro h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.intro p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
+.intro h1 { font-size:3rem; margin-bottom:1rem; opacity:0; }
+.intro p { font-size:1.5rem; margin-bottom:2rem; color:rgba(255,255,255,0.9); opacity:0; }
 .btn {
-  padding: 0.75rem 2rem;
-  background-color: white;
-  color: #2575fc;
+  padding:0.75rem 2rem; background:white; color:#2575fc; text-decoration:none; font-weight:bold;
+  border-radius:8px; transition:0.3s; opacity:0;
+}
+.btn:hover { background:#f0f0f0; }
+
+/* About Section */
+.about, .contact {
+  padding:6rem 2rem; text-align:center; background:#f5f5f5;
+}
+.about h2, .contact h2 { font-size:2.5rem; margin-bottom:1rem; color:#333; }
+.about p, .contact p { font-size:1.2rem; color:#555; max-width:600px; margin:0 auto; }
+
+/* Footer */
+.footer { text-align:center; padding:2rem; background:#1f1f1f; color:white; }
+
+/* Responsive */
+@media(max-width:768px){
+  .intro h1 { font-size:2rem; }
+  .intro p { font-size:1.2rem; }
+  .nav-links { gap:1rem; }
+}
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
