@@ -46,3 +46,17 @@ document.querySelectorAll(".btn").forEach(btn=>{
     btn.style.transform="translate(0,0)";
   });
 });
+
+/* MAGNET TELEGRAM FLOAT */
+const tg = document.querySelector(".telegram-float");
+
+tg.addEventListener("mousemove", e => {
+  const r = tg.getBoundingClientRect();
+  const x = e.clientX - r.left - r.width / 2;
+  const y = e.clientY - r.top - r.height / 2;
+  tg.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+});
+
+tg.addEventListener("mouseleave", () => {
+  tg.style.transform = "translate(0,0) scale(1)";
+});
