@@ -1,166 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-:root {
-  --bg: #020617;
-  --text: #e5e7eb;
-  --neon: #22d3ee;
-  --accent: #38bdf8;
+:root{
+  --bg:#020617; --text:#e5e7eb; --neon:#22d3ee; --accent:#38bdf8;
+}
+.light{
+  --bg:#f8fafc; --text:#020617; --neon:#0ea5e9; --accent:#2563eb;
 }
 
-.light {
-  --bg: #f8fafc;
-  --text: #020617;
-  --neon: #0ea5e9;
-  --accent: #2563eb;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text);scroll-behavior:smooth;overflow-x:hidden}
+
+/* NAVBAR */
+.navbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 2rem;position:fixed;top:0;width:100%;z-index:10;
+  background:rgba(2,6,23,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(34,211,238,.25)
+}
+.nav-links{list-style:none;display:flex;gap:2rem}
+.nav-links a{color:var(--text);text-decoration:none;transition:.3s}
+.nav-links a:hover{color:var(--neon);text-shadow:0 0 10px var(--neon)}
+.toggle{cursor:pointer;font-size:1.3rem}
+
+/* HERO */
+.intro{
+  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding-top:60px;
+  background:radial-gradient(circle at top, rgba(34,211,238,.3), transparent 40%),
+             linear-gradient(135deg,var(--bg),var(--bg))
+}
+.logo-img{width:120px;margin-bottom:1rem;filter:drop-shadow(0 0 15px var(--neon));animation:glow 3s infinite alternate}
+.intro h1{font-size:2.6rem;text-shadow:0 0 20px var(--accent)}
+.intro p{color:#cbd5f5;margin-bottom:1.5rem}
+
+/* BUTTON */
+.btn{
+  padding:.8rem 2.2rem;background:transparent;color:var(--neon);
+  border:2px solid var(--neon);border-radius:10px;font-weight:600;
+  box-shadow:0 0 15px rgba(34,211,238,.5);transition:.3s
+}
+.btn:hover{
+  background:var(--neon);color:var(--bg);
+  box-shadow:0 0 25px var(--neon),0 0 60px var(--neon)
 }
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+/* SECTIONS */
+.about,.contact{padding:5rem 2rem;text-align:center}
+.about h2,.contact h2{color:var(--neon);text-shadow:0 0 12px var(--neon)}
+.about p,.contact p{max-width:520px;margin:0 auto;color:#cbd5f5}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  scroll-behavior:smooth;
-  overflow-x:hidden;
-}
+/* FOOTER */
+.footer{padding:2rem;text-align:center;border-top:1px solid rgba(34,211,238,.25);color:#94a3b8}
 
-/* ================= NAVBAR ================= */
-.navbar {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem 2rem;
-  background:rgba(2,6,23,0.85);
-  backdrop-filter:blur(10px);
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:10;
-  border-bottom:1px solid rgba(34,211,238,0.25);
-}
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:1s ease}
+.reveal.active{opacity:1;transform:none}
 
-.nav-links {
-  list-style:none;
-  display:flex;
-  gap:2rem;
-}
+/* ANIM */
+@keyframes glow{from{filter:drop-shadow(0 0 10px var(--neon))}
+to{filter:drop-shadow(0 0 25px var(--neon))}}
 
-.nav-links a {
-  color:var(--text);
-  text-decoration:none;
-  transition:.3s;
-}
-
-.nav-links a:hover {
-  color:var(--neon);
-  text-shadow:0 0 10px var(--neon);
-}
-
-/* ================= HERO ================= */
-.intro {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding-top:60px;
-  background:
-    radial-gradient(circle at top, rgba(34,211,238,.3), transparent 40%),
-    linear-gradient(135deg, var(--bg), var(--bg));
-}
-
-.logo-img {
-  width:120px;
-  margin-bottom:1rem;
-  filter:drop-shadow(0 0 15px var(--neon));
-  animation:glow 3s infinite alternate;
-}
-
-.intro h1 {
-  font-size:2.6rem;
-  text-shadow:0 0 20px var(--accent);
-}
-
-.intro p {
-  color:#cbd5f5;
-  margin-bottom:1.5rem;
-}
-
-/* ================= BUTTON ================= */
-.btn {
-  padding:.8rem 2.2rem;
-  background:transparent;
-  color:var(--neon);
-  border:2px solid var(--neon);
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 0 15px rgba(34,211,238,.5);
-  transition:.3s;
-}
-
-.btn:hover {
-  background:var(--neon);
-  color:var(--bg);
-  box-shadow:0 0 25px var(--neon),0 0 60px var(--neon);
-}
-
-/* ================= SECTIONS ================= */
-.about,.contact {
-  padding:5rem 2rem;
-  text-align:center;
-}
-
-.about h2,.contact h2 {
-  color:var(--neon);
-  text-shadow:0 0 12px var(--neon);
-}
-
-.about p,.contact p {
-  max-width:520px;
-  margin:0 auto;
-  color:#cbd5f5;
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  padding:2rem;
-  text-align:center;
-  border-top:1px solid rgba(34,211,238,.25);
-  color:#94a3b8;
-}
-
-/* ================= TOGGLE ================= */
-.toggle {
-  cursor:pointer;
-  font-size:1.3rem;
-}
-
-/* ================= ANIMATION ================= */
-@keyframes glow {
-  from { filter:drop-shadow(0 0 10px var(--neon)); }
-  to { filter:drop-shadow(0 0 25px var(--neon)); }
-}
-
-/* ================= SCROLL REVEAL ================= */
-.reveal {
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-
-.reveal.active {
-  opacity:1;
-  transform:none;
-}
-
-/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  .intro h1{font-size:2.1rem;}
-  .nav-links{gap:1rem;}
+  .intro h1{font-size:2.1rem}
+  .nav-links{gap:1rem}
 }
