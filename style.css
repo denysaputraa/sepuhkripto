@@ -108,3 +108,56 @@ to{filter:drop-shadow(0 0 25px var(--neon))}}
     0 0 30px rgba(34,211,238,1),
     0 0 70px rgba(34,211,238,.8);
 }
+
+/* TELEGRAM FLOAT NEON */
+.telegram-float{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#22d3ee;
+  color:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  text-decoration:none;
+  z-index:999;
+  box-shadow:
+    0 0 20px rgba(34,211,238,.9),
+    0 0 40px rgba(34,211,238,.6);
+  animation:pulse 2.5s infinite;
+  transition:.3s;
+  overflow:visible;
+}
+
+/* PULSE */
+@keyframes pulse{
+  0%{box-shadow:0 0 20px rgba(34,211,238,.8)}
+  50%{box-shadow:0 0 40px rgba(34,211,238,1)}
+  100%{box-shadow:0 0 20px rgba(34,211,238,.8)}
+}
+
+/* TOOLTIP */
+.tg-tooltip{
+  position:absolute;
+  right:70px;
+  background:#020617;
+  color:#22d3ee;
+  padding:6px 12px;
+  font-size:.85rem;
+  border-radius:8px;
+  white-space:nowrap;
+  opacity:0;
+  transform:translateY(5px);
+  pointer-events:none;
+  transition:.3s;
+  box-shadow:0 0 12px rgba(34,211,238,.6);
+}
+
+.telegram-float:hover .tg-tooltip{
+  opacity:1;
+  transform:none;
+}
