@@ -68,12 +68,57 @@ fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_cur
   document.getElementById("eth").innerText = "$" + d.ethereum.usd;
 });
 /* LIVE PRICE */
-fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd")
-.then(r=>r.json())
-.then(d=>{
-  document.getElementById("btc").innerText = "$" + d.bitcoin.usd;
-  document.getElementById("eth").innerText = "$" + d.ethereum.usd;
-});
+let lastBTC = null;
+let lastETH = null;
+
+async function loadPrice(){
+  try{
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
+    );
+    const d = await res.json();
+
+    updatePrice(
+      "btc",
+      "btc-indicator",
+      d.bitcoin.usd,
+      lastBTC
+    );
+    updatePrice(
+      "eth",
+      "eth-indicator",
+      d.ethereum.usd,
+      lastETH
+    );
+
+    lastBTC = d.bitcoin.usd;
+    lastETH = d.ethereum.usd;
+
+  }catch(e){
+    document.getElementById("btc").innerText = "N/A";
+    document.getElementById("eth").innerText = "N/A";
+  }
+}
+
+function updatePrice(id, indId, value, last){
+  const el = document.getElementById(id);
+  const ind = document.getElementById(indId);
+
+  el.innerText = "$" + value;
+
+  if(last === null) return;
+
+  if(value > last){
+    ind.innerText = "▲";
+    ind.className = "indicator up";
+  }else if(value < last){
+    ind.innerText = "▼";
+    ind.className = "indicator down";
+  }
+}
+
+loadPrice();
+setInterval(loadPrice, 60000);
 
 /* MAGNET EFFECT */
 const tg = document.querySelector(".telegram-float");
