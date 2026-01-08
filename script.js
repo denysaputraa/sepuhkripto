@@ -134,3 +134,71 @@ function update(id,indId,val,last){
 
 loadPrice();
 setInterval(loadPrice,60000);
+
+let currency = "usd";
+let lastBTC = null, lastETH = null;
+let btcHistory = [], ethHistory = [];
+
+document.getElementById("currencyToggle").onclick = () => {
+  currency = currency === "usd" ? "idr" : "usd";
+  document.getElementById("currencyToggle").innerText = currency.toUpperCase();
+  loadPrice();
+};
+
+async function loadPrice(){
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=${currency}`;
+  const res = await fetch(url);
+  const d = await res.json();
+
+  update("btc","btc-indicator","btc-percent","btc-chart",
+    d.bitcoin[currency], lastBTC, btcHistory);
+  update("eth","eth-indicator","eth-percent","eth-chart",
+    d.ethereum[currency], lastETH, ethHistory);
+
+  lastBTC = d.bitcoin[currency];
+  lastETH = d.ethereum[currency];
+}
+
+function update(id,indId,pctId,chartId,val,last,history){
+  const el = document.getElementById(id);
+  const ind = document.getElementById(indId);
+  const pct = document.getElementById(pctId);
+  const box = el.parentElement;
+
+  el.innerText = (currency==="usd"?"$":"Rp ") + val.toLocaleString();
+
+  if(last){
+    const diff = ((val-last)/last*100).toFixed(2);
+    pct.innerText = `(${diff}%)`;
+
+    if(val>last){
+      ind.innerText="▲"; ind.className="indicator up";
+      box.classList.add("flash-up");
+    }else{
+      ind.innerText="▼"; ind.className="indicator down";
+      box.classList.add("flash-down");
+    }
+    setTimeout(()=>box.classList.remove("flash-up","flash-down"),600);
+  }
+
+  history.push(val);
+  if(history.length>20) history.shift();
+  drawChart(chartId, history);
+}
+
+function drawChart(id,data){
+  const c=document.getElementById(id);
+  const ctx=c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.strokeStyle="#22d3ee";
+  ctx.beginPath();
+  data.forEach((v,i)=>{
+    const x=i*(c.width/(data.length-1));
+    const y=c.height-(v/Math.max(...data))*c.height;
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.stroke();
+}
+
+loadPrice();
+setInterval(loadPrice,60000);
