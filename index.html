@@ -41,14 +41,21 @@
   <div class="glass price-box">
     <p>
       BTC:
-      <span id="btc">loading...</span>
+      <span id="btc">$0</span>
       <span id="btc-indicator" class="indicator"></span>
+      <span id="btc-percent" class="percent"></span>
     </p>
+    <canvas id="btc-chart" height="40"></canvas>
+
     <p>
       ETH:
-      <span id="eth">loading...</span>
+      <span id="eth">$0</span>
       <span id="eth-indicator" class="indicator"></span>
+      <span id="eth-percent" class="percent"></span>
     </p>
+    <canvas id="eth-chart" height="40"></canvas>
+
+    <button id="currencyToggle" class="btn small">USD</button>
   </div>
 </section>
 
