@@ -234,3 +234,12 @@ to{filter:drop-shadow(0 0 25px var(--neon))}}
   from{background-position:0 0}
   to{background-position:400px 400px}
 }
+.fade-up{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .9s forwards;
+}
+
+@keyframes fadeUp{
+  to{opacity:1; transform:none;}
+}
