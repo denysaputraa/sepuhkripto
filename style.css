@@ -251,3 +251,9 @@ to{filter:drop-shadow(0 0 25px var(--neon))}}
   padding:2rem;
   box-shadow:0 0 30px rgba(34,211,238,.2);
 }
+.price-box{
+  margin:2rem auto;
+  max-width:260px;
+  color:var(--neon);
+  font-weight:600;
+}
