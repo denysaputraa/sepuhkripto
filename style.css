@@ -255,3 +255,33 @@ to{filter:drop-shadow(0 0 25px var(--neon))}}
   color:#ef4444;
   text-shadow:0 0 8px rgba(239,68,68,.8);
 }
+.percent{
+  margin-left:6px;
+  font-size:.8rem;
+}
+
+.flash-up{
+  animation:flashUp .6s;
+}
+.flash-down{
+  animation:flashDown .6s;
+}
+
+@keyframes flashUp{
+  from{background:rgba(34,197,94,.3)}
+  to{background:transparent}
+}
+@keyframes flashDown{
+  from{background:rgba(239,68,68,.3)}
+  to{background:transparent}
+}
+
+.price-box canvas{
+  width:100%;
+  margin:6px 0 14px;
+}
+
+.btn.small{
+  padding:.4rem 1rem;
+  font-size:.75rem;
+}
