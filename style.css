@@ -39,3 +39,8 @@ body { scroll-behavior: smooth; }
   .intro p { font-size:1rem; }
   .nav-links { gap:1rem; }
 }
+body {
+  scroll-behavior: smooth;
+  background:#020617;
+  color:#e5e7eb;
+}
